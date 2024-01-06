@@ -15,18 +15,21 @@
   --gray-900: #111827;
   color: var(--gray-800);
   background-color: var(--gray-100);
+  --shadow-1: 0 0 3px rgba(0,0,0,0.2);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --transition: all .3s ease-in-out;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: all .1s ease-in-out;
+  transition: var(--transition);
 }
 
 a {
@@ -36,23 +39,16 @@ a {
 
 body {
   display: flex;
-  place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #f9f9f9;
-  cursor: pointer;
 }

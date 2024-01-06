@@ -1,16 +1,17 @@
+import Editor from './components/Editor.jsx';
+import Display from './components/Display.jsx';
+
 import './App.css';
 
 export default function App() {
   return (
     <>
-      {/* editor sidebar */}
+      <Editor />
+      <Display>
         {/* general */}
         {/* education */}
         {/* experience */}
-      {/* cv display */}
-        {/* general */}
-        {/* education */}
-        {/* experience */}
+      </Display>
     </>
   );
 }
