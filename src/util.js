@@ -19,8 +19,7 @@ export function extractFormValues(form) {
   if (form.id) formValues.id = form.id;
 
   Array.from(form).forEach((field) => {
-    formValues[field.labels[0].textContent.split(' ')[0].toLowerCase()] =
-      field.value;
+    formValues[field.name] = field.value;
   });
 
   return formValues;

@@ -1,23 +1,44 @@
-import { useState } from 'react';
-import { extractFormValues } from '../util';
+import { extractFormValues } from '../util.js';
 import '../styles/Form.css';
 
-export default function Form({ type, data, setData }) {
-  const handleFormChange = (e) => {
+export default function Form({ type, data, setData, id }) {
+  function handleBasicFormChange(e) {
     const formValues = extractFormValues(e.target.form);
     setData({ ...data, [type]: formValues });
-  };
+  }
+  function handleComplexFormChange(e) {
+    const formValues = extractFormValues(e.target.form);
+
+    const index = data[type].findIndex((subData) => subData.id === id);
+    const newData = { ...data };
+    newData[type][index] = formValues;
+
+    setData(newData);
+  }
 
   console.log(data);
-  // console.log(crypto.randomUUID());
 
   switch (type) {
     case 'basicInfo':
-      return <BasicInfoForm data={data} handleFormChange={handleFormChange} />;
+      return (
+        <BasicInfoForm data={data} handleFormChange={handleBasicFormChange} />
+      );
     case 'education':
-      return <EducationForm data={data} handleFormChange={handleFormChange} />;
+      return (
+        <EducationForm
+          id={id}
+          data={data}
+          handleFormChange={handleComplexFormChange}
+        />
+      );
     case 'experience':
-      return <ExperienceForm data={data} handleFormChange={handleFormChange} />;
+      return (
+        <ExperienceForm
+          id={id}
+          data={data}
+          handleFormChange={handleComplexFormChange}
+        />
+      );
   }
 }
 
@@ -28,6 +49,7 @@ function BasicInfoForm({ data, handleFormChange }) {
         Name{' '}
         <input
           type="text"
+          name="name"
           value={data.basicInfo.name || ''}
           placeholder="John Smith"
         />
@@ -36,6 +58,7 @@ function BasicInfoForm({ data, handleFormChange }) {
         Website{' '}
         <input
           type="text"
+          name="website"
           value={data.basicInfo.website || ''}
           placeholder="website.com"
         />
@@ -44,6 +67,7 @@ function BasicInfoForm({ data, handleFormChange }) {
         Email{' '}
         <input
           type="email"
+          name="email"
           value={data.basicInfo.email || ''}
           placeholder="example@email.com"
         />
@@ -52,6 +76,7 @@ function BasicInfoForm({ data, handleFormChange }) {
         Phone number{' '}
         <input
           type="text"
+          name="phone"
           value={data.basicInfo.phone || ''}
           placeholder="123.456.7890"
         />
@@ -60,6 +85,7 @@ function BasicInfoForm({ data, handleFormChange }) {
         Location{' '}
         <input
           type="text"
+          name="location"
           value={data.basicInfo.location || ''}
           placeholder="New York, NY"
         />
@@ -68,48 +94,100 @@ function BasicInfoForm({ data, handleFormChange }) {
   );
 }
 
-function EducationForm({ data, handleFormChange }) {
+function EducationForm({ id, data, handleFormChange }) {
+  const eduData = data.education.find((edu) => edu.id === id);
+  // console.log(eduData);
+
   return (
-    <form onChange={handleFormChange}>
+    <form id={id} onChange={handleFormChange}>
       <label>
-        School <input type="text" placeholder="Example University" />
+        School{' '}
+        <input
+          type="text"
+          name="school"
+          placeholder="Example University"
+          value={eduData.school || ''}
+        />
       </label>
       <label>
-        Location <input type="text" placeholder="New York, NY" />
+        Location{' '}
+        <input
+          type="text"
+          name="location"
+          placeholder="New York, NY"
+          value={eduData.location || ''}
+        />
       </label>
       <label>
-        Degree <input type="text" placeholder="B.S. in Computer Science" />
+        Degree{' '}
+        <input
+          type="text"
+          name="degree"
+          placeholder="B.S. in Computer Science"
+          value={eduData.degree || ''}
+        />
       </label>
       <label>
-        Graduation month <input type="text" placeholder="May 2014" />
+        Graduation month{' '}
+        <input
+          type="text"
+          name="graduation"
+          placeholder="May 2014"
+          value={eduData.graduation || ''}
+        />
       </label>
     </form>
   );
 }
 
-function ExperienceForm({ data, handleFormChange }) {
-  const [current, setCurrent] = useState(false);
+function ExperienceForm({ id, data, handleFormChange }) {
+  // const [current, setCurrent] = useState(false);
+  // const switchOnChange = () => {
+  //   setCurrent(!current);
+  // };
 
-  const switchOnChange = () => {
-    setCurrent(!current);
-  };
+  const expData = data.experience.find((exp) => exp.id === id);
 
   return (
-    <form onChange={handleFormChange}>
+    <form id={id} onChange={handleFormChange}>
       <label>
-        Company <input type="text" placeholder="Example Company" />
+        Company{' '}
+        <input
+          type="text"
+          name="company"
+          placeholder="Example Company"
+          value={expData.company || ''}
+        />
       </label>
       <label>
-        Location <input type="text" placeholder="New York, NY" />
+        Location{' '}
+        <input
+          type="text"
+          name="location"
+          placeholder="New York, NY"
+          value={expData.location || ''}
+        />
       </label>
       <label>
-        Start date <input type="text" placeholder="May 2014" />
+        Start date{' '}
+        <input
+          type="text"
+          name="startDate"
+          placeholder="May 2014"
+          value={expData.startDate || ''}
+        />
       </label>
       <label>
         End date{' '}
-        <input type="text" placeholder="February 2018" disabled={current} />
+        <input
+          type="text"
+          name="endDate"
+          placeholder="February 2018"
+          value={expData.endDate || ''}
+          // disabled={current}
+        />
       </label>
-      <label className="switch">
+      {/* <label className="switch">
         I currently work here
         <div className="switch">
           <input
@@ -120,7 +198,7 @@ function ExperienceForm({ data, handleFormChange }) {
           />
           <div className="slider"></div>
         </div>
-      </label>
+      </label> */}
     </form>
   );
 }

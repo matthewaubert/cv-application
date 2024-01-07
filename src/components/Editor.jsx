@@ -1,18 +1,20 @@
 import { useState } from 'react';
+import { exampleData } from '../example-data.js';
 import Panel from './Panel.jsx';
 
 import '../styles/Editor.css';
 
 export default function Editor() {
   // keep track of active tab of editor
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   // keep track of forms data
-  const [data, setData] = useState({
-    basicInfo: {},
-    education: [],
-    experience: [],
-  });
+  const [data, setData] = useState(exampleData);
+  // const [data, setData] = useState({
+  //   basicInfo: {},
+  //   education: [],
+  //   experience: [],
+  // });
 
   const onClick = (i) => () =>
     activeIndex === i ? setActiveIndex(-1) : setActiveIndex(i);

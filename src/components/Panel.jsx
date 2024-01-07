@@ -22,23 +22,39 @@ export default function Panel({ title, isActive, onClick, data, setData }) {
 
 function SubPanel({ type, data, setData }) {
   const [formVisible, setFormVisible] = useState(false);
+  const [formId, setFormId] = useState('');
 
   const handleAdd = () => setFormVisible(true);
-  const handleCancel = () => setFormVisible(false);
-  const handleSave = () => setData(data);
+  const handleSave = () => setFormVisible(false);
 
-  if (formVisible) return (
-    <div className="sub-panel">
-      <Form type={type} data={data} setData={setData} />
-      <button onClick={handleCancel}>Cancel</button>
-      <button onClick={handleSave}>Save</button>
-    </div>
-  );
+  function handleSpButtonClick(e) {
+    setFormId(e.target.id);
+    setFormVisible(true);
+  }
+
+  if (formVisible)
+    return (
+      <div className="sub-panel">
+        <Form type={type} data={data} setData={setData} id={formId} />
+        <button onClick={handleSave}>Save</button>
+      </div>
+    );
 
   return (
     <div className="sub-panel">
+      {/* show existing education/experience */}
+      {data[type].map((entry) => (
+        <button
+          key={entry.id}
+          id={entry.id}
+          className="expand-sub-panel"
+          onClick={handleSpButtonClick}
+        >
+          {entry.school || entry.company}
+        </button>
+      ))}
       {/* on click, show relevant form */}
-      <button onClick={handleAdd}>Add {type}</button>
+      {/* <button onClick={handleAdd}>Add {type}</button> */}
     </div>
   );
 }
