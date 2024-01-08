@@ -99,7 +99,7 @@ function EducationForm({ id, data, handleFormChange }) {
   // console.log(eduData);
 
   return (
-    <form id={id} onChange={handleFormChange}>
+    <form id={id} onChange={handleFormChange} autoComplete="off">
       <label>
         School{' '}
         <input
@@ -141,15 +141,10 @@ function EducationForm({ id, data, handleFormChange }) {
 }
 
 function ExperienceForm({ id, data, handleFormChange }) {
-  // const [current, setCurrent] = useState(false);
-  // const switchOnChange = () => {
-  //   setCurrent(!current);
-  // };
-
   const expData = data.experience.find((exp) => exp.id === id);
 
   return (
-    <form id={id} onChange={handleFormChange}>
+    <form id={id} onChange={handleFormChange} autoComplete="off">
       <label>
         Company{' '}
         <input
@@ -184,21 +179,17 @@ function ExperienceForm({ id, data, handleFormChange }) {
           name="endDate"
           placeholder="February 2018"
           value={expData.endDate || ''}
-          // disabled={current}
         />
       </label>
-      {/* <label className="switch">
-        I currently work here
-        <div className="switch">
-          <input
-            type="checkbox"
-            id="system-toggle"
-            checked={current}
-            onChange={switchOnChange}
-          />
-          <div className="slider"></div>
-        </div>
-      </label> */}
+      <label>
+        Job description
+        <textarea
+          name="description"
+          rows="6"
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          value={expData.description || ''}
+        />
+      </label>
     </form>
   );
 }
