@@ -55,15 +55,6 @@ function BasicInfoForm({ data, handleFormChange }) {
         />
       </label>
       <label>
-        Website{' '}
-        <input
-          type="text"
-          name="website"
-          value={data.basicInfo.website || ''}
-          placeholder="website.com"
-        />
-      </label>
-      <label>
         Email{' '}
         <input
           type="email"
@@ -88,6 +79,15 @@ function BasicInfoForm({ data, handleFormChange }) {
           name="location"
           value={data.basicInfo.location || ''}
           placeholder="New York, NY"
+        />
+      </label>
+      <label>
+        Website{' '}
+        <input
+          type="text"
+          name="website"
+          value={data.basicInfo.website || ''}
+          placeholder="website.com"
         />
       </label>
     </form>

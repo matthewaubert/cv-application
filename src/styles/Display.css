@@ -1,0 +1,73 @@
+.display {
+  background-color: white;
+  width: 8.5in;
+  aspect-ratio: 8.5 / 11;
+  padding: 0.75in;
+  box-shadow: var(--shadow-2);
+  text-align: left;
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-areas: 
+    "basic-info basic-info"
+    "education experience";
+  row-gap: 0.5in;
+}
+
+.display,
+section.basic-info ul {
+  grid-template-columns: 1fr 2fr;
+  column-gap: 0.3125in;
+}
+
+.display section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125in;
+}
+
+.display h1 {
+  font-size: 24pt;
+  letter-spacing: 1.5pt;
+}
+
+.display h2 {
+  font-size: 16pt;
+  letter-spacing: 1.5pt;
+}
+
+.display h3 {
+  font-size: 13.5pt;
+}
+
+.display li {
+  font-size: 11.5pt;
+}
+
+section.basic-info {
+  grid-area: basic-info;
+}
+
+section.basic-info > ul {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+section.basic-info ul > li:first-child {
+  order: 1;
+}
+section.basic-info ul > li:nth-child(2) {
+  order: 3;
+}
+section.basic-info ul > li:nth-child(3) {
+  order: 2;
+}
+section.basic-info ul > li:nth-child(4) {
+  order: 4;
+}
+section.education {
+  grid-area: education;
+}
+
+section.experience {
+  grid-area: experience;
+}
