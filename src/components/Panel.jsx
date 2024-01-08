@@ -24,10 +24,32 @@ function SubPanel({ type, data, setData }) {
   const [formVisible, setFormVisible] = useState(false);
   const [formId, setFormId] = useState('');
 
-  const handleAdd = () => setFormVisible(true);
-  const handleSave = () => setFormVisible(false);
+  function handleAdd() {
+    const newData = { ...data };
+    const newId = crypto.randomUUID();
+    newData[type].push({ id: newId });
 
-  function handleSpButtonClick(e) {
+    setData(newData);
+    setFormId(newId);
+    setFormVisible(true);
+  }
+
+  const handleSave = () => setFormVisible(false);
+  function handleDelete() {
+    if (window.confirm('Are you sure you want to delete this?')) {
+      // get index of subData w/ id in data
+      const index = data[type].map(subData => subData.id).indexOf(formId);
+
+      // splice subData from data
+      const newData = { ...data };
+      newData[type].splice(index, 1);
+      setData(newData);
+
+      setFormVisible(false);
+    }
+  }
+
+  function handleSubPanelButtonClick(e) {
     setFormId(e.target.id);
     setFormVisible(true);
   }
@@ -36,7 +58,10 @@ function SubPanel({ type, data, setData }) {
     return (
       <div className="sub-panel">
         <Form type={type} data={data} setData={setData} id={formId} />
-        <button onClick={handleSave}>Save</button>
+        <div className="buttons">
+          <button onClick={handleDelete}>Delete</button>
+          <button onClick={handleSave}>Save</button>
+        </div>
       </div>
     );
 
@@ -44,17 +69,14 @@ function SubPanel({ type, data, setData }) {
     <div className="sub-panel">
       {/* show existing education/experience */}
       {data[type].map((entry) => (
-        <button
+        <SubPanelButton
           key={entry.id}
-          id={entry.id}
-          className="expand-sub-panel"
-          onClick={handleSpButtonClick}
-        >
-          {entry.school || entry.company}
-        </button>
+          entry={entry}
+          onClick={handleSubPanelButtonClick}
+        />
       ))}
       {/* on click, show relevant form */}
-      {/* <button onClick={handleAdd}>Add {type}</button> */}
+      <button onClick={handleAdd}>Add {type}</button>
     </div>
   );
 }
@@ -71,6 +93,14 @@ function PanelButton({ title, isActive, onClick }) {
         <title>chevron-down</title>
         <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
       </svg>
+    </button>
+  );
+}
+
+function SubPanelButton({ entry, onClick }) {
+  return (
+    <button id={entry.id} className="expand-sub-panel" onClick={onClick}>
+      {entry.school || entry.company}
     </button>
   );
 }
