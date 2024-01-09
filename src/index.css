@@ -52,3 +52,17 @@ button {
 ul {
   list-style-type: none;
 }
+
+@media (max-width: 880px) {
+  #root {
+    flex-direction: column;
+  }
+
+  .display-container {
+    align-self: center;
+  }
+  
+  .editor h1 {
+    text-align: center;
+  }
+}

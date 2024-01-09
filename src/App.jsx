@@ -13,7 +13,7 @@ export default function App() {
   //   education: [],
   //   experience: [],
   // });
-  
+
   return (
     <>
       <Editor data={data} setData={setData} />

@@ -1,10 +1,20 @@
+.display-container {
+  width: calc(8.5in * var(--display-factor));
+  height: calc(11in * var(--display-factor));
+  display: grid;
+}
+
 .display {
+  flex: 0 0 auto;
   background-color: white;
   width: 8.5in;
-  aspect-ratio: 8.5 / 11;
+  height: 11in;
   padding: 0.75in;
   box-shadow: var(--shadow-2);
   text-align: left;
+  transform-origin: top left;
+  transform: scale(var(--display-factor));
+
   display: grid;
   grid-template-rows: min-content;
   grid-template-areas: 
