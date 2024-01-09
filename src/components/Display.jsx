@@ -23,7 +23,7 @@ export default function Display({ data }) {
             <h2>EDUCATION</h2>
             {data.education.map((edu) => (
               <div key={edu.id}>
-                <h3>{edu.school}</h3>
+                <h3>{edu.name}</h3>
                 <ul>
                   <li>{edu.location}</li>
                   <li>{edu.degree}</li>
@@ -39,7 +39,7 @@ export default function Display({ data }) {
             <h2>EXPERIENCE</h2>
             {data.experience.map((exp) => (
               <div key={exp.id}>
-                <h3>{exp.company}</h3>
+                <h3>{exp.name}</h3>
                 <ul>
                   <li>{exp.location}</li>
                   <li>
@@ -49,6 +49,28 @@ export default function Display({ data }) {
                 </ul>
               </div>
             ))}
+          </section>
+        )}
+        {/* skills */}
+        {data.skills.length > 0 && (
+          <section className="skills">
+            <h2>SKILLS</h2>
+            {data.skills.map((skill) => {
+              const subSkills = skill.subSkills
+                ? skill.subSkills.split(', ')
+                : null;
+              return (
+                <div key={skill.id}>
+                  <h3>{skill.name}</h3>
+                  <ul>
+                    {subSkills &&
+                      subSkills.map((subSkill) => (
+                        <li key={subSkill}>{subSkill}</li>
+                      ))}
+                  </ul>
+                </div>
+              );
+            })}
           </section>
         )}
       </div>

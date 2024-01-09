@@ -67,7 +67,7 @@ export default function SubPanel({ type, data, setData }) {
 function SubPanelButton({ entry, onClick }) {
   return (
     <button id={entry.id} className="expand-sub-panel" onClick={onClick}>
-      {entry.school || entry.company}
+      {entry.name}
     </button>
   );
 }

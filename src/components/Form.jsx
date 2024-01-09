@@ -39,6 +39,14 @@ export default function Form({ type, data, setData, id }) {
           handleFormChange={handleComplexFormChange}
         />
       );
+    case 'skills':
+      return (
+        <SkillsForm
+          id={id}
+          data={data}
+          handleFormChange={handleComplexFormChange}
+        />
+      );
   }
 }
 
@@ -104,9 +112,9 @@ function EducationForm({ id, data, handleFormChange }) {
         School{' '}
         <input
           type="text"
-          name="school"
+          name="name"
           placeholder="Example University"
-          value={eduData.school || ''}
+          value={eduData.name || ''}
         />
       </label>
       <label>
@@ -149,9 +157,9 @@ function ExperienceForm({ id, data, handleFormChange }) {
         Company{' '}
         <input
           type="text"
-          name="company"
+          name="name"
           placeholder="Example Company"
-          value={expData.company || ''}
+          value={expData.name || ''}
         />
       </label>
       <label>
@@ -188,6 +196,34 @@ function ExperienceForm({ id, data, handleFormChange }) {
           rows="6"
           placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
           value={expData.description || ''}
+        />
+      </label>
+    </form>
+  );
+}
+
+function SkillsForm({ id, data, handleFormChange }) {
+  const skillsData = data.skills.find((skill) => skill.id === id);
+  // console.log(skillsData);
+
+  return (
+    <form id={id} onChange={handleFormChange} autoComplete="off">
+      <label>
+        Skill Group Name{' '}
+        <input
+          type="text"
+          name="name"
+          placeholder="Programming"
+          value={skillsData.name || ''}
+        />
+      </label>
+      <label>
+        Skills (separate each by comma and space){' '}
+        <input
+          type="text"
+          name="subSkills"
+          placeholder="JavaScript"
+          value={skillsData.subSkills || ''}
         />
       </label>
     </form>

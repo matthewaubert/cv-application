@@ -11,7 +11,7 @@ export default function Editor({ data, setData }) {
     activeIndex === i ? setActiveIndex(-1) : setActiveIndex(i);
 
   // panel titles
-  const titles = ['basicInfo', 'education', 'experience'];
+  const titles = ['basicInfo', 'education', 'experience', 'skills'];
 
   return (
     <div className="editor">
