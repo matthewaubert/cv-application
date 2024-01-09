@@ -1,0 +1,20 @@
+.print {
+  position: fixed;
+  height: 4.2rem;
+  width: 4.2rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background-color: var(--gray-500);
+  border-radius: 50px;
+  box-shadow: var(--shadow-2);
+  transition: var(--transition);
+}
+
+.print:hover {
+  transform: scale(1.08);
+}
+
+.print > svg {
+  fill: white;
+  width: 2.5rem;
+}

@@ -16,7 +16,7 @@
   color: var(--gray-800);
   background-color: var(--gray-200);
   --shadow-1: 0 0 3px rgba(0,0,0,0.2);
-  --shadow-2: 0 0 10px rgba(0,0,0,0.2);
+  --shadow-2: 0 0 12px rgba(0,0,0,0.2);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -64,5 +64,35 @@ ul {
   
   .editor h1 {
     text-align: center;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;  /* this affects the margin in the printer settings */
+    size: letter;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  html {
+    background-color: #FFFFFF;
+  }
+
+  body {
+    visibility: hidden;
+  }
+
+  .display {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: none;
   }
 }
