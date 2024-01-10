@@ -13,6 +13,18 @@ export function camelToTitleCase(string) {
   );
 }
 
+// return a deep copy of given data object
+export function deepCopyData(data) {
+  const res = {};
+  Object.keys(data).forEach((key) => {
+    Array.isArray(data[key])
+      ? (res[key] = data[key].map((obj) => ({ ...obj })))
+      : (res[key] = { ...data[key] });
+  });
+
+  return res;
+}
+
 // convert given form data to JavaScript object
 // e.g. output: { name: 'John Smith', website: 'website.com', email: 'example@email.com', phone: '123-456-7890', location: 'New York, NY' }
 export function extractFormValues(form) {
@@ -53,7 +65,8 @@ export function compareByDate(a, b) {
     parsedA = parse(a.endDate, 'MM/yyyy', new Date());
   } catch {
     return 1;
-  } try {
+  }
+  try {
     parsedB = parse(b.endDate, 'MM/yyyy', new Date());
   } catch {
     return -1;

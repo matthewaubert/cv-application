@@ -1,3 +1,10 @@
+export const newData = {
+  basicInfo: {},
+  education: [],
+  experience: [],
+  skills: []
+};
+
 export const exampleData = {
   basicInfo: {
     name: 'Jonathan Smith',

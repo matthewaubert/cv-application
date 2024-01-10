@@ -7,7 +7,7 @@ export default function Display({ data }) {
       <div className="display">
         {/* basic info */}
         <section className="basic-info">
-          <h1>{data.basicInfo.name.toUpperCase()}</h1>
+          <h1>{data.basicInfo.name && data.basicInfo.name.toUpperCase()}</h1>
           <ul>
             {Object.keys(data.basicInfo).map(
               (field) =>

@@ -118,7 +118,7 @@ function EducationForm({ id, data, handleFormChange }) {
           type="text"
           name="name"
           placeholder="Example University"
-          value={eduData.name || ''}
+          value={eduData?.name || ''}
         />
       </label>
       <label>
@@ -127,7 +127,7 @@ function EducationForm({ id, data, handleFormChange }) {
           type="text"
           name="location"
           placeholder="New York, NY"
-          value={eduData.location || ''}
+          value={eduData?.location || ''}
         />
       </label>
       <label>
@@ -136,7 +136,7 @@ function EducationForm({ id, data, handleFormChange }) {
           type="text"
           name="degree"
           placeholder="B.S. in Computer Science"
-          value={eduData.degree || ''}
+          value={eduData?.degree || ''}
         />
       </label>
       <label>
@@ -147,7 +147,7 @@ function EducationForm({ id, data, handleFormChange }) {
           type="text"
           name="endDate"
           placeholder="May 2014"
-          value={eduData.endDate || ''}
+          value={eduData?.endDate || ''}
         />
       </label>
     </form>
@@ -165,7 +165,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
           type="text"
           name="name"
           placeholder="Example Company"
-          value={expData.name || ''}
+          value={expData?.name || ''}
         />
       </label>
       <label>
@@ -174,7 +174,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
           type="text"
           name="location"
           placeholder="New York, NY"
-          value={expData.location || ''}
+          value={expData?.location || ''}
         />
       </label>
       <label>
@@ -185,7 +185,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
           type="text"
           name="startDate"
           placeholder="May 2014"
-          value={expData.startDate || ''}
+          value={expData?.startDate || ''}
         />
       </label>
       <label>
@@ -199,7 +199,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
           type="text"
           name="endDate"
           placeholder="February 2018"
-          value={expData.endDate || ''}
+          value={expData?.endDate || ''}
         />
       </label>
       <label>
@@ -208,7 +208,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
           name="description"
           rows="7"
           placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          value={expData.description || ''}
+          value={expData?.description || ''}
         />
       </label>
     </form>
@@ -227,7 +227,7 @@ function SkillsForm({ id, data, handleFormChange }) {
           type="text"
           name="name"
           placeholder="Programming"
-          value={skillsData.name || ''}
+          value={skillsData?.name || ''}
         />
       </label>
       <label>
@@ -236,7 +236,7 @@ function SkillsForm({ id, data, handleFormChange }) {
           type="text"
           name="subSkills"
           placeholder="JavaScript, HTML/CSS"
-          value={skillsData.subSkills || ''}
+          value={skillsData?.subSkills || ''}
         />
       </label>
     </form>
