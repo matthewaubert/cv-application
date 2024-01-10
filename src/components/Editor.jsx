@@ -18,8 +18,10 @@ export default function Editor({ data, setData }) {
   const titles = ['basicInfo', 'education', 'experience', 'skills'];
 
   return (
-    <div className="editor">
-      <h1>CV Application</h1>
+    <nav className="editor">
+      <header>
+        <h1>CV Application</h1>
+      </header>
       {/* 'Reset CV' and 'Load Example' buttons */}
       <MacroEditor setData={setData} />
       {/* create Panel component for each title */}
@@ -33,7 +35,7 @@ export default function Editor({ data, setData }) {
           setData={setData}
         />
       ))}
-    </div>
+    </nav>
   );
 }
 

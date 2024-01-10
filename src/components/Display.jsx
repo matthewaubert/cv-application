@@ -4,7 +4,7 @@ import '../styles/Display.css';
 // React component for CV display
 export default function Display({ data }) {
   return (
-    <div className="display-container">
+    <main className="display-container">
       <div className="display">
         {/* basic info section */}
         <section className="basic-info">
@@ -79,6 +79,6 @@ export default function Display({ data }) {
           </section>
         )}
       </div>
-    </div>
+    </main>
   );
 }
