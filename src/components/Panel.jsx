@@ -1,6 +1,6 @@
-import { camelToTitleCase } from '../util.js';
 import SubPanel from './SubPanel.jsx';
 import Form from './Form.jsx';
+import { camelToTitleCase } from '../util.js';
 
 import '../styles/Panel.css';
 
@@ -24,14 +24,16 @@ function PanelButton({ title, isActive, onClick }) {
   return (
     <button className="expand-panel" onClick={onClick}>
       <h2>{camelToTitleCase(title)}</h2>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        className={isActive ? 'active' : 'inactive'}
-      >
-        <title>chevron-down</title>
-        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-      </svg>
+      <span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className={isActive ? 'active' : 'inactive'}
+        >
+          <title>drop-down arrow</title>
+          <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+        </svg>
+      </span>
     </button>
   );
 }

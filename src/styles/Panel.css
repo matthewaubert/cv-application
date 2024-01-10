@@ -1,8 +1,9 @@
 div.panel {
   border-radius: 12px;
   background-color: white;
-  filter: drop-shadow(var(--shadow-1));
+  box-shadow: var(--shadow-1);
   padding: 0.6rem 1.2rem;
+
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -13,21 +14,35 @@ div.panel > *:nth-child(2) {
 }
 
 button.expand-panel {
+  background-color: transparent;
+  color: var(--gray-800);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: transparent;
 }
 
-.expand-panel > svg {
+.expand-panel svg {
+  fill: var(--gray-800);
   height: 2rem;
 }
 
-svg.inactive {
-  transform: rotate(-180deg);
+.expand-panel > span {
+  background-color: white;
+  border-radius: 24px;
+  display: grid;
+  place-content: center;
+}
+
+.expand-panel:hover > span {
+  filter: brightness(0.91);
+}
+
+svg.active {
+  transform: rotate(180deg);
 }

@@ -5,8 +5,8 @@
 }
 
 .display {
-  flex: 0 0 auto;
   background-color: white;
+  color: black;
   width: 8.5in;
   height: 11in;
   padding: 0.75in;
@@ -15,6 +15,7 @@
   transform-origin: top left;
   transform: scale(var(--display-factor));
 
+  flex: 0 0 auto;
   display: grid;
   grid-template-rows: repeat(3, min-content);
   grid-template-areas: 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Form from './Form.jsx';
-
 import '../styles/SubPanel.css';
 
 export default function SubPanel({ type, data, setData }) {
@@ -19,7 +18,7 @@ export default function SubPanel({ type, data, setData }) {
 
   const handleSave = () => setFormVisible(false);
   function handleDelete() {
-    if (window.confirm('Are you sure you want to delete this?')) {
+    if (confirm('Are you sure you want to delete this?')) {
       // get index of subData w/ id in data
       const index = data[type].map((subData) => subData.id).indexOf(formId);
 
@@ -42,8 +41,8 @@ export default function SubPanel({ type, data, setData }) {
       <div className="sub-panel">
         <Form type={type} data={data} setData={setData} id={formId} />
         <div className="buttons">
-          <button onClick={handleDelete}>Delete</button>
-          <button onClick={handleSave}>Save</button>
+          <button className="delete" onClick={handleDelete}>Delete</button>
+          <button className="save" onClick={handleSave}>Save</button>
         </div>
       </div>
     );
@@ -59,7 +58,7 @@ export default function SubPanel({ type, data, setData }) {
         />
       ))}
       {/* on click, show relevant form */}
-      <button onClick={handleAdd}>Add {type}</button>
+      <button className="add-item" onClick={handleAdd}>Add {type}</button>
     </div>
   );
 }

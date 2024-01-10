@@ -1,17 +1,18 @@
-.print {
+button.print {
   position: fixed;
   height: 4.2rem;
   width: 4.2rem;
   right: 1.5rem;
   bottom: 1.5rem;
-  background-color: var(--gray-500);
+  background-color: var(--sky-500);
   border-radius: 50px;
   box-shadow: var(--shadow-2);
   transition: var(--transition);
 }
 
-.print:hover {
+button.print:hover {
   transform: scale(1.08);
+  background-color: var(--sky-600);
 }
 
 .print > svg {

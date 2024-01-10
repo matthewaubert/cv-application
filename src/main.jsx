@@ -8,7 +8,7 @@ function resizeDisplay() {
     window.innerWidth > 1196
       ? 1
       : window.innerWidth > 880
-        ? (window.innerWidth - 380) / 816
+        ? (window.innerWidth - 383) / 816
         : (window.innerWidth - 64) / 816;
 
   document.documentElement.style.setProperty('--display-factor', displayFactor);

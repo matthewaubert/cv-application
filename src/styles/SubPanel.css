@@ -12,15 +12,31 @@
 
 .sub-panel button {
   border-radius: 10px;
-  background-color: var(--gray-500);
-  color: white;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: var(--shadow-1);
+}
+
+button.expand-sub-panel,
+button.delete {
+  background-color: white;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-800);
   padding: 0.8rem;
 }
 
-button.expand-sub-panel {
-  background-color: white;
-  color: var(--gray-800);
-  filter: drop-shadow(var(--shadow-1));
+button.add-item,
+button.save {
+  background-color: var(--sky-500);
+  color: white;
+  padding: calc(0.8rem + 1px);
+}
+
+button.expand-sub-panel:hover,
+.sub-panel .buttons > button:hover {
+  filter: brightness(0.93);
+}
+
+button.add-item:hover {
+  background-color: var(--sky-600);
 }
