@@ -1,3 +1,4 @@
+import { formatDate, compareByDate } from '../util.js';
 import '../styles/Display.css';
 
 export default function Display({ data }) {
@@ -21,13 +22,13 @@ export default function Display({ data }) {
         {data.education.length > 0 && (
           <section className="education">
             <h2>EDUCATION</h2>
-            {data.education.map((edu) => (
+            {data.education.sort(compareByDate).map((edu) => (
               <div key={edu.id}>
                 <h3>{edu.name}</h3>
                 <ul>
                   <li>{edu.location}</li>
                   <li>{edu.degree}</li>
-                  <li>{edu.graduation}</li>
+                  <li>{formatDate(edu.endDate)}</li>
                 </ul>
               </div>
             ))}
@@ -37,14 +38,17 @@ export default function Display({ data }) {
         {data.experience.length > 0 && (
           <section className="experience">
             <h2>EXPERIENCE</h2>
-            {data.experience.map((exp) => (
+            {data.experience.sort(compareByDate).map((exp) => (
               <div key={exp.id}>
                 <h3>{exp.name}</h3>
                 <ul>
                   <li>{exp.location}</li>
-                  <li>
-                    {exp.startDate} - {exp.endDate}
-                  </li>
+                  {(exp.startDate || exp.endDate) && (
+                    <li>
+                      {formatDate(exp.startDate)} &ndash;{' '}
+                      {formatDate(exp.endDate)}
+                    </li>
+                  )}
                   <li>{exp.description}</li>
                 </ul>
               </div>

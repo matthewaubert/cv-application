@@ -13,3 +13,9 @@
   gap: 0.1rem;
   text-align: left;
 }
+
+.note {
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  color: var(--gray-600);
+}

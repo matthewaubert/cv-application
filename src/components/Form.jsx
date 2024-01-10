@@ -81,7 +81,9 @@ function BasicInfoForm({ data, handleFormChange }) {
         />
       </label>
       <label>
-        Location{' '}
+        <span>
+          Location<span className="note">optional</span>
+        </span>{' '}
         <input
           type="text"
           name="location"
@@ -90,7 +92,9 @@ function BasicInfoForm({ data, handleFormChange }) {
         />
       </label>
       <label>
-        Website{' '}
+        <span>
+          Website<span className="note">optional</span>
+        </span>{' '}
         <input
           type="text"
           name="website"
@@ -136,12 +140,14 @@ function EducationForm({ id, data, handleFormChange }) {
         />
       </label>
       <label>
-        Graduation month{' '}
+        <span>
+          Graduation date<span className="note">format: mm/yyyy</span>
+        </span>{' '}
         <input
           type="text"
-          name="graduation"
+          name="endDate"
           placeholder="May 2014"
-          value={eduData.graduation || ''}
+          value={eduData.endDate || ''}
         />
       </label>
     </form>
@@ -172,7 +178,9 @@ function ExperienceForm({ id, data, handleFormChange }) {
         />
       </label>
       <label>
-        Start date{' '}
+        <span>
+          Start date<span className="note">format: mm/yyyy</span>
+        </span>{' '}
         <input
           type="text"
           name="startDate"
@@ -181,7 +189,12 @@ function ExperienceForm({ id, data, handleFormChange }) {
         />
       </label>
       <label>
-        End date{' '}
+        <span>
+          End date
+          <span className="note">
+            format: mm/yyyy or &quot;present&quot;
+          </span>
+        </span>{' '}
         <input
           type="text"
           name="endDate"
@@ -193,7 +206,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
         Job description
         <textarea
           name="description"
-          rows="6"
+          rows="7"
           placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
           value={expData.description || ''}
         />
@@ -218,11 +231,11 @@ function SkillsForm({ id, data, handleFormChange }) {
         />
       </label>
       <label>
-        Skills (separate each by comma and space){' '}
+        <span>Skills<span className="note">separate by comma and space</span></span>{' '}
         <input
           type="text"
           name="subSkills"
-          placeholder="JavaScript"
+          placeholder="JavaScript, HTML/CSS"
           value={skillsData.subSkills || ''}
         />
       </label>
