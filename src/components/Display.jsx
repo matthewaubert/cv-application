@@ -1,11 +1,12 @@
-import { formatDate, compareByDate } from '../util.js';
+import { compareByDate, formatDate } from '../util.js';
 import '../styles/Display.css';
 
+// React component for CV display
 export default function Display({ data }) {
   return (
     <div className="display-container">
       <div className="display">
-        {/* basic info */}
+        {/* basic info section */}
         <section className="basic-info">
           <h1>{data.basicInfo.name && data.basicInfo.name.toUpperCase()}</h1>
           <ul>
@@ -18,7 +19,7 @@ export default function Display({ data }) {
             )}
           </ul>
         </section>
-        {/* education */}
+        {/* education section */}
         {data.education.length > 0 && (
           <section className="education">
             <h2>EDUCATION</h2>
@@ -34,7 +35,7 @@ export default function Display({ data }) {
             ))}
           </section>
         )}
-        {/* experience */}
+        {/* experience section */}
         {data.experience.length > 0 && (
           <section className="experience">
             <h2>EXPERIENCE</h2>
@@ -55,7 +56,7 @@ export default function Display({ data }) {
             ))}
           </section>
         )}
-        {/* skills */}
+        {/* skills section */}
         {data.skills.length > 0 && (
           <section className="skills">
             <h2>SKILLS</h2>

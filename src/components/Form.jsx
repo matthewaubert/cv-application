@@ -1,23 +1,29 @@
-import { extractFormValues } from '../util.js';
+import { deepCopyData, extractFormValues } from '../util.js';
 import '../styles/Form.css';
 
 export default function Form({ type, data, setData, id }) {
+  // event handler for BasicInfoForm to extract form values and set data
   function handleBasicFormChange(e) {
     const formValues = extractFormValues(e.target.form);
-    setData({ ...data, [type]: formValues });
-  }
-  function handleComplexFormChange(e) {
-    const formValues = extractFormValues(e.target.form);
 
-    const index = data[type].findIndex((subData) => subData.id === id);
-    const newData = { ...data };
-    newData[type][index] = formValues;
-
+    // replace section obj w/ formValues obj
+    const newData = deepCopyData(data);
+    newData[type] = formValues;
     setData(newData);
   }
 
-  console.log(data);
+  // event handler for all other forms to extract form values and set data
+  function handleComplexFormChange(e) {
+    const formValues = extractFormValues(e.target.form);
 
+    // find subsection obj by its id and replace w/ formValues obj
+    const index = data[type].findIndex((subsection) => subsection.id === id);
+    const newData = deepCopyData(data);
+    newData[type][index] = formValues;
+    setData(newData);
+  }
+
+  // render appropriate form based on given type
   switch (type) {
     case 'basicInfo':
       return (
@@ -108,7 +114,6 @@ function BasicInfoForm({ data, handleFormChange }) {
 
 function EducationForm({ id, data, handleFormChange }) {
   const eduData = data.education.find((edu) => edu.id === id);
-  // console.log(eduData);
 
   return (
     <form id={id} onChange={handleFormChange} autoComplete="off">
@@ -191,9 +196,7 @@ function ExperienceForm({ id, data, handleFormChange }) {
       <label>
         <span>
           End date
-          <span className="note">
-            format: mm/yyyy or &quot;present&quot;
-          </span>
+          <span className="note">format: mm/yyyy or &quot;present&quot;</span>
         </span>{' '}
         <input
           type="text"
@@ -217,7 +220,6 @@ function ExperienceForm({ id, data, handleFormChange }) {
 
 function SkillsForm({ id, data, handleFormChange }) {
   const skillsData = data.skills.find((skill) => skill.id === id);
-  // console.log(skillsData);
 
   return (
     <form id={id} onChange={handleFormChange} autoComplete="off">
@@ -231,7 +233,9 @@ function SkillsForm({ id, data, handleFormChange }) {
         />
       </label>
       <label>
-        <span>Skills<span className="note">separate by comma and space</span></span>{' '}
+        <span>
+          Skills<span className="note">separate by comma and space</span>
+        </span>{' '}
         <input
           type="text"
           name="subSkills"

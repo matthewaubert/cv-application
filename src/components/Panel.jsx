@@ -1,10 +1,12 @@
 import SubPanel from './SubPanel.jsx';
 import Form from './Form.jsx';
 import { camelToTitleCase } from '../util.js';
-
 import '../styles/Panel.css';
 
+// React component for each Panel in Editor
 export default function Panel({ title, isActive, onClick, data, setData }) {
+  // if Panel title is 'basicInfo': render Form component;
+  // else: render SubPanel component
   const subPanel =
     title === 'basicInfo' ? (
       <Form type={title} data={data} setData={setData} />
@@ -20,6 +22,7 @@ export default function Panel({ title, isActive, onClick, data, setData }) {
   );
 }
 
+// React component for header button to open and close Panel on click
 function PanelButton({ title, isActive, onClick }) {
   return (
     <button className="expand-panel" onClick={onClick}>

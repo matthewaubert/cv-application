@@ -17,7 +17,7 @@
   box-shadow: var(--shadow-1);
 }
 
-button.expand-sub-panel,
+button.expand-subsection,
 button.delete {
   background-color: white;
   border: 1px solid var(--gray-300);
@@ -32,7 +32,7 @@ button.save {
   padding: calc(0.8rem + 1px);
 }
 
-button.expand-sub-panel:hover,
+button.expand-subsection:hover,
 .sub-panel .buttons > button:hover {
   filter: brightness(0.93);
 }

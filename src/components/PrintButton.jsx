@@ -1,5 +1,6 @@
 import '../styles/PrintButton.css';
 
+// React component for print button
 export default function PrintButton() {
   return (
     <button className="print" onClick={() => print()}>
